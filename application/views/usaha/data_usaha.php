@@ -67,12 +67,19 @@
                       </a> <?php }
                     else { ?>
                     <a href="<?=site_url('Ccetak/cetak_allusaha')?>">
-                      <button type="button" class="btn btn-secondary btn-sm"> 
+                      <button type="button" class="btn btn-danger btn-sm"> 
                         <span class= "fa fa-file-pdf-o"> Cetak Data</span>
                       </button>
                     </a> 
                     <?php } ?>
                <?php } ?>
+
+                <a href="<?=site_url('Ccetak/export_allusaha')?>">
+                  <button type="button" class="btn btn-success btn-sm"> 
+                    <span class= "fa fa-file-excel-o"> Export Excel</span>
+                  </button>
+                </a> 
+
             </div>
 
             <div class="card-body">

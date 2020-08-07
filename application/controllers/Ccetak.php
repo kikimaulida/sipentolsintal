@@ -162,4 +162,75 @@
 	        $nama = "Data Usaha Kecil.pdf";
 	        $pdf->Output($nama, "I");
 	    }
+
+	    public function export_allusaha()
+	    {
+	    	$this->load->model('m_usaha');
+	        $usaha = $this->m_usaha->tampil_usaha()->result();
+
+	        require(APPPATH. 'PHPExcel-1.8/Classes/PHPExcel.php');
+	        require(APPPATH. 'PHPExcel-1.8/Classes/PHPExcel/Writer/Excel2007.php');
+
+	        $object = new PHPExcel();
+
+	        $object->getProperties()->setCreator("Framewoek Indonesia");
+	        $object->getProperties()->setLastModifiedBy("Framewoek Indonesia");
+	        $object->getProperties()->setTitle("Data Usaha");
+	        $object->setActiveSheetIndex(0);
+
+	        $object->getActiveSheet()->setCellValue('A1', 'No');
+	        $object->getActiveSheet()->setCellValue('B1', 'NIK');
+	        $object->getActiveSheet()->setCellValue('C1', 'Nama');
+	        $object->getActiveSheet()->setCellValue('D1', 'Usaha');
+	        $object->getActiveSheet()->setCellValue('E1', 'Kategori');
+	        $object->getActiveSheet()->setCellValue('F1', 'Alamat');
+	        $object->getActiveSheet()->setCellValue('G1', 'Kecamatan');
+	        $object->getActiveSheet()->setCellValue('H1', 'Telepon');
+	        $object->getActiveSheet()->setCellValue('I1', 'Bergabung');
+
+	        $baris = 2;
+	        $no = 1;
+
+	        foreach ($usaha as $row){
+	        	$object->getActiveSheet()->setCellValue('A'.$baris, $no++);
+	        	$object->getActiveSheet()->setCellValue('B'.$baris, $row->nik);
+	        	$object->getActiveSheet()->setCellValue('C'.$baris, $row->nama_lengkap);
+	        	$object->getActiveSheet()->setCellValue('D'.$baris, $row->nama_usaha);
+	        	$object->getActiveSheet()->setCellValue('E'.$baris, $row->nama_kategori);
+	        	$object->getActiveSheet()->setCellValue('F'.$baris, $row->alamat);
+	        	$object->getActiveSheet()->setCellValue('G'.$baris, $row->nama_kecamatan);
+	        	$object->getActiveSheet()->setCellValue('H'.$baris, $row->telepon);
+	        	$object->getActiveSheet()->setCellValue('I'.$baris, $row->bergabung);
+
+	        	$baris++;
+
+	        }
+
+	        $object->getActiveSheet()->getColumnDimension('A')->setWidth(5); //no
+	        $object->getActiveSheet()->getColumnDimension('B')->setWidth(20); // nama lengkap
+		    $object->getActiveSheet()->getColumnDimension('C')->setWidth(25); // nama lengkap
+		    $object->getActiveSheet()->getColumnDimension('D')->setWidth(25); //nama usaha
+		    $object->getActiveSheet()->getColumnDimension('E')->setWidth(15); // kategori
+		    $object->getActiveSheet()->getColumnDimension('F')->setWidth(30); //alamat
+		    $object->getActiveSheet()->getColumnDimension('G')->setWidth(20); //kecamatan
+		    $object->getActiveSheet()->getColumnDimension('H')->setWidth(15); //telepon
+		    $object->getActiveSheet()->getColumnDimension('I')->setWidth(15); //bergabung
+
+
+	        $filename = "Data Usaha".'.xlsx';
+	        $object->getActiveSheet()->setTitle("Data Usaha");
+
+	        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+	        header('Content-Disposition: attachment;filename="'.$filename.'"');
+	        header('Cache-Control:max-age=0');
+
+	        $writer= PHPExcel_IOFactory::createwriter($object, 'Excel2007');
+	        $writer->save('php://output');
+
+	        exit;
+
+
+
+
+	    }
 	}

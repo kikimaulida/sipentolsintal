@@ -77,6 +77,19 @@
                 </div>
 
                 <div class="row form-group">
+                    <div class="col col-md-3"><label for="select" class=" form-control-label">Kel/Desa</label></div>
+                    <div class="col-12 col-md-9">
+                         <?php echo form_dropdown('kelurahan', $kelurahan, $selectedkelurahan,['class' => 'standardSelect',
+                    'required' => 'required'])?>
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col-md-3"><label class=" form-control-label">Kode Pos</label></div>
+                    <div class="col-12 col-md-9"><input type="text" name="kode_pos" value="<?=$row->kode_pos ?>" class="form-control" required></div>
+                </div>
+
+                <div class="row form-group">
                     <div class="col-md-3"><label class=" form-control-label">Jam Operasional</label></div>
                     <div class="col-12 col-md-9"><input type="text" name="jam_operasional" value="<?=$row->jam_operasional?>" class="form-control" required></div>
                 </div>

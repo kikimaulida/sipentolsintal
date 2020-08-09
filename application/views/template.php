@@ -37,6 +37,13 @@
     <link rel="stylesheet" href="<?=base_url()?>/assets/vendors/selectFX/css/cs-skin-elastic.css">
     <link rel="stylesheet" href="<?=base_url()?>/assets/vendors/chosen/chosen.min.css">
 
+    <script>
+       function autofill()
+       {
+            alert('sasa');
+       }
+    </script>
+
 </head>
 
 <body>
@@ -108,7 +115,11 @@
 
                     <li <?=$this->uri->segment(1) == 'Ckecamatan' ? 'class="active"' : ''?>>
                         <a href="<?=site_url('Ckecamatan')?>"> <i class="menu-icon fa fa-flag"></i> Data Kecamatan</a>
-                     </li>
+                    </li>
+
+                    <li <?=$this->uri->segment(1) == 'Ckelurahan' ? 'class="active"' : ''?>>
+                        <a href="<?=site_url('Ckelurahan')?>"> <i class="menu-icon fa fa-flag"></i> Data Kelurahan</a>
+                    </li>
 
                     <li <?=$this->uri->segment(1) == 'Cpengguna' ? 'class="active"' : ''?>>
                         <a href="<?=site_url('Cpengguna')?>"> <i class="menu-icon fa fa-users"></i> Data Pengguna</a>

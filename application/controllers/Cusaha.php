@@ -7,7 +7,7 @@
 		{
 			parent::__construct();
 			check_not_login();
-			$this->load->model(['m_usaha', 'm_pengguna', 'm_kategori', 'm_kecamatan', 'm_notif']);
+			$this->load->model(['m_usaha', 'm_pengguna', 'm_kategori', 'm_kecamatan', 'm_kelurahan', 'm_notif']);
 		}
 
 		public function index() 
@@ -35,6 +35,7 @@
 			$usaha->omzet = null;
 			$usaha->deskripsi = null;
 			$usaha->alamat = null;
+			$usaha->kode_pos = null;
 			$usaha->jam_operasional = null;
 			$usaha->telepon = null;
 			$usaha->foto_usaha = null;
@@ -71,12 +72,19 @@
 				$kecamatan[$kcmtn->id_kecamatan] = $kcmtn->nama_kecamatan;
 			}
 
+			$query_kelurahan = $this->m_kelurahan->tampil_kelurahan();
+			$kelurahan[null] = '- Pilih Kelurahan-';
+			foreach ($query_kelurahan->result() as $klrhn) {
+				$kelurahan[$klrhn->id_kelurahan] = $klrhn->nama_kelurahan;
+			}
+
 			$data = array(
 				'page' => 'tambah',
 				'row' => $usaha,
 				'pengguna' => $pengguna, 'selectedpengguna' => null,
 				'kategori' => $kategori, 'selectedkategori' => null,
 				'kecamatan' => $kecamatan, 'selectedkecamatan' => null,
+				'kelurahan' => $kelurahan, 'selectedkelurahan' => null,
 			);
 			$this->template->load('template', 'usaha/form_usaha', $data);
 		}

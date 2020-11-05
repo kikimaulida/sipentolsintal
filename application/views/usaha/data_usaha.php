@@ -18,16 +18,70 @@
                   <div class="col-sm-3">
                       <input type="date" name="awal" placeholder="awal" class="form-control">
                   </div>
+
+                  <!-- <div class="col-md-1"></div>
+                  <div class="col-md-2">
+                      <label class=" form-control-label">Tanggal Akhir</label>
+                  </div>
+                  <div class="col-sm-3">
+                      <input type="date" name="akhir" placeholder="awal" class="form-control">
+                  </div> -->
                 </div>
+
+                <form  method="get" class="form-horizontal">
                 <div class="row form-group">
                   <div class="col-md-3"></div>
                   <div class="col-md-2">
                       <label class=" form-control-label">Tanggal Akhir</label>
                   </div>
                   <div class="col-sm-3">
-                      <input type="date" name="akhir" placeholder="awal" class="form-control">
+                      <input type="date" name="akhir" placeholder="akhir" class="form-control">
                   </div>
+
+                  <!-- <div class="col-md-1"></div>
+                  <div class="col-md-2">
+                      <label class=" form-control-label">Tanggal Akhir</label>
+                  </div>
+                  <div class="col-sm-3">
+                      <input type="date" name="akhir" placeholder="awal" class="form-control">
+                  </div> -->
                 </div>
+
+               <!--  <div class="row form-group">
+                  <div class="col-md-0"></div>
+                  <div class="col-md-2">
+                      <label class=" form-control-label">Cari</label>
+                  </div>
+                  <div class="col-sm-3">
+                      <input type="text" name="cari" placeholder="klasifikasi" class="form-control">
+                  </div>
+
+                  <div class="col-md-1"></div>
+                  <div class="col-md-2">
+                      <label class=" form-control-label">Kategori</label>
+                  </div>
+                  <div class="col-sm-3">
+                      <input type="text" name="kategori" placeholder="kategori" class="form-control">
+                  </div>
+                </div> -->
+
+                <!-- <div class="row form-group">
+                  <div class="col-md-0"></div>
+                  <div class="col-md-2">
+                      <label class=" form-control-label">Kecamatan</label>
+                  </div>
+                  <div class="col-sm-3">
+                      <input type="text" name="kecamatan" placeholder="kecamatan" class="form-control">
+                  </div>
+
+                  <div class="col-md-1"></div>
+                  <div class="col-md-2">
+                      <label class=" form-control-label">Kelurahan</label>
+                  </div>
+                  <div class="col-sm-3">
+                      <input type="text" name="kelurahan" placeholder="kelurahan" class="form-control">
+                  </div>
+                </div> -->
 
                 <div align="center">
                   <button type="submit" class="btn btn-info">Filter</button>
@@ -38,7 +92,9 @@
                 <hr>
               </form>
                  
-              <?php if(isset($_GET['awal']) && isset($_GET['akhir'])){
+              <?php 
+                if(isset($_GET['awal']) && isset($_GET['akhir']))
+                {
                   $awal = $_GET['awal'];
                   $akhir = $_GET['akhir'];
                 }
@@ -61,27 +117,31 @@
                     if(isset($_GET['awal']) && isset($_GET['akhir']))
                     { ?>
                       <a href="<?=site_url('Ccetak/cetak_usaha/'.$awal. '/'.$akhir)?>">
-                        <button type="button" class="btn btn-secondary btn-sm"> 
+                        <button type="button" class="btn btn-danger btn-sm"> 
                           <span class= "fa fa-file-pdf-o"> Cetak Data</span>
                         </button>
-                      </a> <?php }
+                      </a> 
+                      <a href="<?=site_url('Ccetak/export_usaha/'.$awal. '/'.$akhir)?>">
+                      <button type="button" class="btn btn-success btn-sm"> 
+                        <span class= "fa fa-file-excel-o"> Export Excel</span>
+                      </button>
+                    </a> 
+                    <?php }
                     else { ?>
                     <a href="<?=site_url('Ccetak/cetak_allusaha')?>">
                       <button type="button" class="btn btn-danger btn-sm"> 
                         <span class= "fa fa-file-pdf-o"> Cetak Data</span>
                       </button>
                     </a> 
+
+                    <a href="<?=site_url('Ccetak/export_allusaha')?>">
+                      <button type="button" class="btn btn-success btn-sm"> 
+                        <span class= "fa fa-file-excel-o"> Export Excel</span>
+                      </button>
+                    </a> 
                     <?php } ?>
                <?php } ?>
-
-                <a href="<?=site_url('Ccetak/export_allusaha')?>">
-                  <button type="button" class="btn btn-success btn-sm"> 
-                    <span class= "fa fa-file-excel-o"> Export Excel</span>
-                  </button>
-                </a> 
-
             </div>
-
             <div class="card-body">
               <div class="table-responsive">
                 <table id="bootstrap-data-table-export" class="table table-striped table-bordered">

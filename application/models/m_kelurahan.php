@@ -13,7 +13,7 @@ class m_kelurahan extends CI_Model {
 			$this->db->where('id_kelurahan', $id_kelurahan);
 
 		}
-		$this->db->order_by('id_kecamatan', 'ASC');
+		$this->db->order_by('id_kelurahan', 'ASC');
 		$query = $this->db->get();
 		return $query;
 	}

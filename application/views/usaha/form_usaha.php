@@ -42,12 +42,17 @@
 
                 <div class="row form-group">
                     <div class="col-md-3"><label class=" form-control-label">Asset</label></div>
-                    <div class="col-12 col-md-9"><input type="text" name="asset" value="<?=$row->asset?>" class="form-control" required></div>
+                    <div class="col-12 col-md-9"><input type="text" onkeyup="mencarikriteria();" id="aset" name="asset" value="<?=$row->asset?>" class="form-control" required></div>
                 </div>
 
                 <div class="row form-group">
                     <div class="col-md-3"><label class=" form-control-label">Omzet</label></div>
-                    <div class="col-12 col-md-9"><input type="text" name="omzet" value="<?=$row->omzet?>" class="form-control" required></div>
+                    <div class="col-12 col-md-9"><input type="text" id="omzet" onkeyup="mencarikriteria();" name="omzet" value="<?=$row->omzet?>" class="form-control" required></div>
+                </div> 
+
+                <div class="row form-group">
+                    <div class="col-md-3"><label class=" form-control-label">Klasifiksi</label></div>
+                    <div class="col-12 col-md-9"><input type="text" name="kelas" id="klasifikasi" readonly value="<?=$row->kelas?>" class="form-control" required></div>
                 </div> 
 
                 <div class="row form-group">
@@ -68,25 +73,47 @@
                     <div class="col-12 col-md-9"><input type="text" name="alamat" value="<?=$row->alamat?>" class="form-control" required></div>
                 </div>
 
-                <div class="row form-group">
+                <!-- <div class="row form-group">
                     <div class="col col-md-3"><label for="select" class=" form-control-label">Kecamatan</label></div>
                     <div class="col-12 col-md-9">
                          <?php echo form_dropdown('kecamatan', $kecamatan, $selectedkecamatan,['class' => 'standardSelect',
                     'required' => 'required'])?>
                     </div>
-                </div>
+                </div> -->
 
                 <div class="row form-group">
+                    <div class="col-md-3"><label class=" form-control-label">Kecamatan</label></div>
+                    <div class="col-12 col-md-9"> 
+                        <select name="kecamatan" id="nm_kecamatan" class="browser-default custom-select" required>
+                            <option value="">- Pilih Kecamatan -</option>
+                            <?php foreach ($kecamatan as $dt) { ?>
+                                 <option value="<?php echo $dt->id_kecamatan?>"><?php echo $dt->nama_kecamatan?></option>
+                           <?php } ?>
+
+                         </select>
+                    </div>
+                </div>
+
+                 <div class="row form-group">
+                    <div class="col-md-3"><label class=" form-control-label">Kelurahan</label></div>
+                    <div class="col-12 col-md-9"> 
+                        <select name="kelurahan" id="nm_kelurahan" class="browser-default custom-select" required>
+                            <option value="">- Pilih Kelurahan -</option>
+                         </select>
+                    </div>
+                </div>
+
+               <!--  <div class="row form-group">
                     <div class="col col-md-3"><label for="select" class=" form-control-label">Kel/Desa</label></div>
                     <div class="col-12 col-md-9">
                          <?php echo form_dropdown('kelurahan', $kelurahan, $selectedkelurahan,['class' => 'standardSelect',
                     'required' => 'required'])?>
                     </div>
-                </div>
+                </div> -->
 
                 <div class="row form-group">
                     <div class="col-md-3"><label class=" form-control-label">Kode Pos</label></div>
-                    <div class="col-12 col-md-9"><input type="text" name="kode_pos" value="<?=$row->kode_pos ?>" class="form-control" required></div>
+                    <div class="col-12 col-md-9"><input type="text" name="kode_pos" id="kodepos" value="<?=$row->kode_pos ?>" class="form-control" required readonly></div>
                 </div>
 
                 <div class="row form-group">
@@ -132,6 +159,11 @@
                 <!-- PAGE UBAH -->
                 <?php if($this->session->userdata('level') == 'admin') { ?>
                     <?php if($page == 'ubah') { ?>
+                     <input type="hidden" name="status" value="<?php echo $status='diterima'?>" class="form-control" readonly="readonly" required>
+                    <?php } ?> 
+                <?php } ?>
+                <!-- <?php if($this->session->userdata('level') == 'admin') { ?>
+                    <?php if($page == 'ubah') { ?>
                     <div class="row form-group">
                         <div class="col-md-3"><label class=" form-control-label">Status</label></div>
                         <div class="col-12 col-md-9">
@@ -143,7 +175,9 @@
                         </div>
                     </div>
                     <?php } ?> 
-                <?php } ?>
+                <?php } ?> -->
+
+
 
                 <?php if($this->session->userdata('level') == 'pelaku usaha') { ?>
                     <?php if($page == 'ubah') { ?>
@@ -167,4 +201,7 @@
             <?php echo form_close()?>
         </div>
     </div>
+
 </div>
+
+

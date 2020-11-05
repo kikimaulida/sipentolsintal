@@ -48,9 +48,7 @@
 
 <body>
 
-
     <!-- Left Panel -->
-
     <aside id="left-panel" class="left-panel">
         <nav class="navbar navbar-expand-sm navbar-default">
 
@@ -85,10 +83,13 @@
                     <li <?=$this->uri->segment(1) == 'Ckonfirusaha' ? 'class="active"' : ''?>>
                         <a href="<?=site_url('Ckonfirusaha')?>"> <i class="menu-icon fa fa-bell"></i>Konfirmasi Usaha<span class="count bg-danger"><?=$jml_usaha ?></span></a>
 
+                    <?php if($this->session->userdata('level') == 'admin') { ?>
                     <li <?=$this->uri->segment(1) == 'Ckonfirakun' ? 'class="active"' : ''?>>
                         <a href="<?=site_url('Ckonfirakun')?>"> <i class="menu-icon fa fa-bell"></i>Konfirmasi Akun<span class="count bg-danger"><?=$jml_daftar ?></span></a>
                             
                     </li>
+                    <?php } ?>
+
                     <h3 class="menu-title">Kelola Data</h3>
                     <?php if($this->session->userdata('level') == 'admin') { ?>
                     <li class="menu-item-has-children dropdown <?=$this->uri->segment(1) == 'Cusaha' || $this->uri->segment(1) == 'Cproduk1' || $this->uri->segment(1) == 'Ckategori' ? 'active' : ''?>">
@@ -106,6 +107,24 @@
                                 <a href="<?=site_url('Ckategori')?>">
                                 <i class="fa fa-database"></i> Data Kategori</span></a>
                             </li>
+                             <li <?=$this->uri->segment(1) == 'Ckelas' ? 'class="active"' : ''?>>
+                                <a href="<?=site_url('Ckelas')?>">
+                                <i class="fa fa-database"></i> Data Klasifikasi</span></a>
+                            </li>
+                        </ul>
+                    </li>
+
+                     <li class="menu-item-has-children dropdown <?=$this->uri->segment(1) == 'Ckecamatan' || $this->uri->segment(1) == 'Ckelurahan' || $this->uri->segment(1) == 'Ckecamatan' ? 'active' : ''?>">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-map-marker"></i>Data Daerah</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li <?=$this->uri->segment(1) == 'Ckecamatan' ? 'class="active"' : ''?>>
+                                <a href="<?=site_url('Ckecamatan')?>">
+                                <i class="fa fa-flag"></i> Data Kecamatan</a>
+                            </li>
+                            <li <?=$this->uri->segment(1) == 'Ckelurahan' ? 'class="active"' : ''?>>
+                                <a href="<?=site_url('Ckelurahan')?>">
+                                <i class="fa fa-flag"></i> Data Kelurahan</a>
+                            </li>
                         </ul>
                     </li>
 
@@ -113,13 +132,13 @@
                         <a href="<?=site_url('Cbanner')?>"> <i class="menu-icon fa fa-image"></i> Data Banner</a>
                     </li>
 
-                    <li <?=$this->uri->segment(1) == 'Ckecamatan' ? 'class="active"' : ''?>>
+                    <!-- <li <?=$this->uri->segment(1) == 'Ckecamatan' ? 'class="active"' : ''?>>
                         <a href="<?=site_url('Ckecamatan')?>"> <i class="menu-icon fa fa-flag"></i> Data Kecamatan</a>
                     </li>
 
                     <li <?=$this->uri->segment(1) == 'Ckelurahan' ? 'class="active"' : ''?>>
                         <a href="<?=site_url('Ckelurahan')?>"> <i class="menu-icon fa fa-flag"></i> Data Kelurahan</a>
-                    </li>
+                    </li> -->
 
                     <li <?=$this->uri->segment(1) == 'Cpengguna' ? 'class="active"' : ''?>>
                         <a href="<?=site_url('Cpengguna')?>"> <i class="menu-icon fa fa-users"></i> Data Pengguna</a>
@@ -246,7 +265,67 @@
             });
         });
     </script>
+    <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script> -->
+    <script type="text/javascript">
+        jQuery(document).ready(function(){
+            jQuery('#nm_kecamatan').on('change', function(){
+                var id_kecamatan = jQuery(this).val();
+                jQuery.ajax({
+                    url: "<?php echo base_url('Cusaha/ambil_data') ?>",
+                    type: "POST",
+                    data:{modul: 'Kecamatan', id:id_kecamatan},
+                    success: function(respond){
+                        jQuery("#nm_kelurahan").html(respond);
+                    },
+                    error : function ()
+                    {
+                        alert('error');
+                    }
+                })
+            })
+        })
+        
+    </script>
 
+    <script type="text/javascript">
+        jQuery(document).ready(function(){
+            jQuery('#nm_kelurahan').on('change', function(){
+                var id_kelurahan = jQuery(this).val();
+                jQuery.ajax({
+                    url: "<?php echo base_url('Cusaha/ambil_data') ?>",
+                    type: "POST",
+                    data:{modul: 'Kelurahan', id:id_kelurahan},
+                    success: function(respond){
+                        jQuery("#kodepos").val(respond);
+                    },
+                    error : function ()
+                    {
+                        alert('error');
+                    }
+                })
+            })
+        })
+        
+    </script>
+
+    <script type="text/javascript">
+        function mencarikriteria(){
+            var aset = document.getElementById('aset').value;
+            var omzet = document.getElementById('omzet').value;
+
+            if (aset <= 50000000 && omzet <= 300000000){
+                document.getElementById('klasifikasi').value="Mikro";
+
+            }
+            else if (aset > 50000000 && aset <= 500000000 && omzet > 300000000 && omzet<= 2500000000)
+            {
+                document.getElementById('klasifikasi').value='Kecil';   
+            }
+            else if (aset > 500000000 && aset <= 10000000000 && omzet > 2500000000 && omzet <= 50000000000)
+            {
+                document.getElementById('klasifikasi').value='Menengah';   
+            }
+        }
+    </script>
 </body>
-
 </html>

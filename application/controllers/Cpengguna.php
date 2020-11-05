@@ -23,6 +23,7 @@
 		{
 			$pengguna = new stdClass();
 			$pengguna->id_pengguna = null;
+			$pengguna->nik = null;
 			$pengguna->nama_lengkap = null;
 			$pengguna->email = null;
 			$pengguna->username = null;

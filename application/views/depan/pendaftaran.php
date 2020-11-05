@@ -77,9 +77,23 @@
                                     </div>
 
                                     <div class="row form-group">
+                                        <div class="col-md-3"><label class=" form-control-label" style="color: black;">NIK</label></div>
+                                        <div class="col-12 col-md-9"><input type="text" name="nik" value="<?=$row->nik?>" class="form-control" required oninvalid="this.setCustomValidity('Silahkan Diisi')" oninput="setCustomValidity('')"></div>
+                                    </div>
+
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label class=" form-control-label" style="color: black;">Upload Foto/Scan KTP</label>
+                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            <input style="color: black;" type="file" id="file-input" name="foto_ktp" class="form-control-file" required oninvalid="this.setCustomValidity('Silahkan upload foto/scan KTP')" oninput="setCustomValidity('')">
+                                        </div>
+                                    </div>
+
+                                    <div class="row form-group">
                                         <div class="col-md-3"><label class=" form-control-label" style="color: black;">Nama Lengkap</label></div>
                                         <div class="col-12 col-md-9"><input type="text" name="nama_lengkap" value="<?=$row->nama_lengkap?>" class="form-control" required oninvalid="this.setCustomValidity('Silahkan Diisi')" oninput="setCustomValidity('')"></div>
                                     </div>
+
 
                                     <div class="row form-group">
                                         <div class="col-md-3"><label class=" form-control-label" style="color: black;">Email</label></div>
@@ -109,14 +123,6 @@
                                         </div>
                                     </div>
 
-                                    <div class="row form-group">
-                                        <div class="col col-md-3"><label class=" form-control-label" style="color: black;">Upload Foto/Scan KTP</label>
-                                        </div>
-                                        <div class="col-12 col-md-9">
-                                            <input style="color: black;" type="file" id="file-input" name="foto_ktp" class="form-control-file" required oninvalid="this.setCustomValidity('Silahkan upload foto/scan KTP')" oninput="setCustomValidity('')">
-                                        </div>
-                                    </div>
-
                                     <input type="hidden" name="level" value="<?php echo $level='pelaku usaha'?>" class="form-control">
 
                                     <input type="hidden" name="status" value="<?php echo $status='menunggu konfirmasi'?>" class="form-control" readonly="readonly" required>
@@ -129,7 +135,7 @@
                                 </form>
                                 <?php echo form_close()?>
                                 <p style="font-size: 12px;"> Keterangan*<br>
-                                SKU = Surat Keteranan Usaha <br> KTP = Kartu Tanda Penduduk</p>
+                                SKU = Surat Keterangan Usaha <br> KTP = Kartu Tanda Penduduk</p>
                                 <p style="font-size: 12px; color: blue"> Catatan*<br>
                                 Jika Akun Anda Sudah Aktif, Silahkan Login Untuk Mengelola Usaha Anda</p>
                             </div>

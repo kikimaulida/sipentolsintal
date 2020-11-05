@@ -7,7 +7,7 @@
                       <strong class="card-title">Detail Pendaftar</strong>
                     </div>
                     <div class="card-body" align="center">
-                      <a href="<?=site_url('cpengguna')?>">
+                      <a href="<?=site_url('ckonfirakun')?>">
                           <button type="button" class="btn btn-secondary btn-sm" style="margin-top: 10px""><i class="fa fa-reply-all"></i>&nbsp; Kembali</button>
                       </a>
                     </div>
@@ -18,7 +18,11 @@
 
                               <?php $no=1; 
                                 foreach ($row->result() as $key => $data) {
-                                ?>  
+                                ?> 
+                                <tr>
+                                  <td width="15%"><b>NIK</b></td>
+                                  <td><?=$data->nik?></td>
+                                </tr> 
                                 <tr>
                                   <td width="15%"><b>Nama Lengkap</b></td>
                                   <td><?=$data->nama_lengkap?></td>

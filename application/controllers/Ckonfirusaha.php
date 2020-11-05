@@ -34,7 +34,10 @@
 
 		function status()
 	    {
-	    	$email_kirim = $this->input->post('email');
+	    	$id_usaha = $this->input->post('id_usaha');
+	    	$sql = $this->db->query("SELECT tb_pengguna.email from tb_pengguna join tb_usaha on tb_pengguna.id_pengguna=tb_usaha.id_pengguna where tb_usaha.id_usaha='$id_usaha'")->row_array();
+	    	$email_kirim = $sql['email'];
+	    	
 	        $status=$this->input->post('status');
 	        if ($status =='diterima') {
 	        	$subject = "Konfirmasi Usaha Diterima";

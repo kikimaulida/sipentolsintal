@@ -33,6 +33,7 @@
 			$usaha->nama_usaha = null;
 			$usaha->asset = null;
 			$usaha->omzet = null;
+			$usaha->kelas = null;
 			$usaha->deskripsi = null;
 			$usaha->alamat = null;
 			$usaha->kode_pos = null;
@@ -66,12 +67,9 @@
 				$kategori[$ktgr->id_kategori] = $ktgr->nama_kategori;
 			}
 
-			$query_kecamatan = $this->m_kecamatan->tampil_kecamatan();
-			$kecamatan[null] = '- Pilih Kecamatan-';
-			foreach ($query_kecamatan->result() as $kcmtn) {
-				$kecamatan[$kcmtn->id_kecamatan] = $kcmtn->nama_kecamatan;
-			}
-
+			$kecamatan = $this->m_kecamatan->tampil_kecamatan()->result();
+			
+ 
 			$query_kelurahan = $this->m_kelurahan->tampil_kelurahan();
 			$kelurahan[null] = '- Pilih Kelurahan-';
 			foreach ($query_kelurahan->result() as $klrhn) {
@@ -207,11 +205,13 @@
 					$kategori[$ktgr->id_kategori] = $ktgr->nama_kategori;
 				}
 
-				$query_kecamatan = $this->m_kecamatan->tampil_kecamatan();
+				/*$query_kecamatan = $this->m_kecamatan->tampil_kecamatan();
 				$kecamatan[null] = '- Pilih Kecamatan-';
 				foreach ($query_kecamatan->result() as $kcmtn) {
 					$kecamatan[$kcmtn->id_kecamatan] = $kcmtn->nama_kecamatan;
-				}
+				}*/
+
+				$kecamatan = $this->m_kecamatan->tampil_kecamatan()->result();
 
 				$data = array(
 					'page' => 'ubah',
@@ -252,5 +252,18 @@
 	        $status=$this->input->post('status');
 	        $this->m_usaha->status($id_usaha,$status);
 	        redirect('Cusaha');        
+	    }
+ 
+	    function ambil_data()
+	    {
+	    	$modul = $this->input->post('modul');
+	    	$id = $this->input->post('id');
+
+	    	if ($modul == 'Kecamatan'){
+	    		echo $this ->m_usaha->data_kecamatan($id);
+	    	}
+	    	else if ($modul == 'Kelurahan'){
+	    		echo $this->m_usaha->data_pos($id);
+	    	}
 	    }
 	}

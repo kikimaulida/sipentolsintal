@@ -49,6 +49,7 @@ class m_pengguna extends CI_Model {
 	{
 		$pengguna = [
 			'id_pengguna' => $post['id_pengguna'],
+			'nik' => $post['nik'],
 			'nama_lengkap' => $post['nama_lengkap'],
 			'email' => $post['email'],
 			'username' => $post['username'],

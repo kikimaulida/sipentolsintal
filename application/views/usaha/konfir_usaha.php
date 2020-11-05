@@ -127,7 +127,12 @@
               <center><p>Tolak Usaha <b><?php echo $nama_usaha;?></b> ?</p></center> 
               <input type="hidden" name="id_usaha" value="<?php echo $id_usaha;?>" readonly="readonly">
               <input type="hidden" name="status" value="ditolak" readonly="readonly" class="form-control col-md-7 col-xs-12">
+
+              <div class="row form-group">
+                <div class="col-12 col-md-12"><textarea name="pesan" rows="3" class="form-control" placeholder="Masukkan alasan penolakan"></textarea></div>
+              </div>
             </div>
+
             <div class="modal-footer">
                 <button type="submit" class="btn btn-info">OK</button>
             </div>

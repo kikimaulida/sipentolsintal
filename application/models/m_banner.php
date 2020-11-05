@@ -16,7 +16,6 @@ class m_banner extends CI_Model {
 		$this->db->order_by('id_banner', 'ASC');
 		$query = $this->db->get();
 		return $query;
-
 	}
  
 	public function tambah_banner($post)

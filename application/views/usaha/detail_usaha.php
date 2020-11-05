@@ -23,17 +23,14 @@
                       ?> 
                     </div>
                     
-                    <div class="card-body">
+                    <!-- <div class="card-body">
                       <div class="table-responsive">
                         <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
 
                               <?php $no=1; 
                                 foreach ($row->result() as $key => $data) {
                                 ?>  
-                                <!-- <tr> 
-                                  <td width="15%"><b>ID Usaha</b></td>
-                                  <td><?=$data->id_usaha?></td>
-                                </tr> -->
+                            
                                 <tr>
                                   <td width="15%"><b>Nama Usaha</b></td>
                                   <td><?=$data->nama_usaha?></td>
@@ -109,7 +106,163 @@
                             </tbody>
                         </table>
                       </div>
-                    </div>
+                    </div> -->
+                  <div class="card-body card-block">
+                    <form  method="get" class="form-horizontal">
+                      <?php $no=1; 
+                        foreach ($row->result() as $key => $data) {
+                      ?>  
+                      <div class="row form-group">
+                        <div class="col-md-0"></div>
+                        <div class="col-md-2">
+                            <label class=" form-control-label">Nama Usaha</label>
+                        </div>
+                        <div class="col-sm-3">
+                          <textarea name="deskripsi" rows="2" class="form-control" disabled><?=$data->nama_usaha?></textarea>
+                        </div>
+
+                        <div class="col-md-1"></div>
+                        <div class="col-md-2">
+                            <label class=" form-control-label">Alamat</label>
+                        </div>
+                        <div class="col-sm-3">
+                          <textarea name="deskripsi" rows="2" class="form-control" disabled><?=$data->alamat?></textarea>
+                        </div>
+                      </div>
+
+                      <div class="row form-group">
+                        <div class="col-md-0"></div>
+                        <div class="col-md-2">
+                            <label class=" form-control-label">Nama Pemilik</label>
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="" class="form-control" value="<?=$data->nama_lengkap?>" disabled>
+                        </div>
+
+                        <div class="col-md-1"></div>
+                        <div class="col-md-2">
+                            <label class=" form-control-label">Kecamatan</label>
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control" value="<?=$data->nama_kecamatan?>" disabled>
+                        </div>
+                      </div>
+
+                      <div class="row form-group">
+                        <div class="col-md-0"></div>
+                        <div class="col-md-2">
+                            <label class=" form-control-label">Asset</label>
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="" class="form-control" value="<?=$data->asset?>" disabled>
+                        </div>
+
+                        <div class="col-md-1"></div>
+                        <div class="col-md-2">
+                            <label class=" form-control-label">Kelurahan</label>
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control" value="<?=$data->nama_kelurahan?>" disabled>
+                        </div>
+                      </div>
+
+                      <div class="row form-group">
+                        <div class="col-md-0"></div>
+                        <div class="col-md-2">
+                            <label class=" form-control-label">Omzet</label>
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="" class="form-control" value="<?=$data->omzet?>" disabled>
+                        </div>
+
+                        <div class="col-md-1"></div>
+                        <div class="col-md-2">
+                            <label class=" form-control-label">Kode Pos</label>
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control" value="<?=$data->kode_pos?>" disabled>
+                        </div>
+                      </div>
+
+                      <div class="row form-group">
+                        <div class="col-md-0"></div>
+                        <div class="col-md-2">
+                            <label class=" form-control-label">Klasifikasi</label>
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="" class="form-control" value="<?=$data->kelas?>" disabled>
+                        </div>
+
+                        <div class="col-md-1"></div>
+                        <div class="col-md-2">
+                            <label class=" form-control-label">Operasional</label>
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control" value="<?=$data->jam_operasional?>" disabled>
+                        </div>
+                      </div>
+
+                      <div class="row form-group">
+                        <div class="col-md-0"></div>
+                        <div class="col-md-2">
+                            <label class=" form-control-label">Kategori</label>
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control" value="<?=$data->nama_kategori?>" disabled>
+                        </div>
+
+                        <div class="col-md-1"></div>
+                        <div class="col-md-2">
+                            <label class="form-control-label">Telepon</label>
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control" value="<?=$data->telepon?>" disabled>
+                        </div>
+                      </div>
+
+                      <div class="row form-group">
+                        <div class="col-md-0"></div>
+                        <div class="col-md-2">
+                            <label class=" form-control-label">Deskripsi</label>
+                        </div>
+                        <div class="col-sm-3">
+                            <textarea name="deskripsi" rows="4" class="form-control" disabled><?=$data->deskripsi?></textarea>
+                        </div>
+
+                        <div class="col-md-1"></div>
+                        <div class="col-md-2">
+                            <label class="form-control-label">Bergabung</label>
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="text" class="form-control" value="<?=date('d-m-Y', strtotime($data->bergabung))?>" disabled>
+                        </div>
+                      </div>
+
+                      <div class="row form-group">
+                        <div class="col-md-0"></div>
+                        <div class="col-md-2">
+                            <label class=" form-control-label">Foto Usaha</label>
+                        </div>
+                        <div class="col-sm-3" class="perbesar">
+                          <?php if ($data->foto_usaha != null ) { ?> 
+                            <img src="<?=base_url('uploads/usaha/'.$data->foto_usaha)?>" style="width: 150px;">
+                          <?php } ?>   
+                        </div>
+
+                        <div class="col-md-1"></div>
+                        <div class="col-md-2">
+                            <label class=" form-control-label">Foto SKU</label>
+                        </div>
+                        <div class="col-sm-3">
+                          <?php if ($data->foto_sku != null ) { ?> 
+                            <img src="<?=base_url('uploads/pengguna/'.$data->foto_sku)?>" style="width: 150px;">
+                          <?php } ?>  
+                        </div>
+                      </div>
+
+                    <?php } ?> 
+                    </form>
+                  </div>
                 </div>
             </div>
         </div>

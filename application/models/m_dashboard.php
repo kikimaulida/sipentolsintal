@@ -35,6 +35,7 @@ class m_dashboard extends CI_Model {
     function usahapengguna(){
         $id_pengguna= $this->session->userdata('id_pengguna');
         $this->db->where('id_pengguna', $id_pengguna);
+        $this->db->where('status', 'diterima');
         $usahapengguna = $this->db->get('tb_usaha')->num_rows();
         return $usahapengguna;
     }

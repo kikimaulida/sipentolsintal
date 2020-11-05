@@ -23,7 +23,7 @@ class m_produk extends CI_Model {
 
 	public function getproduk1($id_usaha)
 	{
-		return $this->db->query("SELECT tb_produk.*, tb_pengguna.id_pengguna, tb_pengguna.nama_lengkap, tb_usaha.id_usaha, tb_usaha.nama_usaha, tb_kecamatan.nama_kecamatan FROM tb_pengguna JOIN tb_produk ON tb_pengguna.id_pengguna = tb_produk.id_pengguna JOIN tb_usaha ON tb_usaha.id_usaha = tb_produk.id_usaha JOIN tb_kecamatan ON tb_usaha.id_kecamatan = tb_kecamatan.id_kecamatan WHERE tb_usaha.id_usaha ='$id_usaha'");
+		return $this->db->query("SELECT tb_produk.*, tb_pengguna.id_pengguna, tb_pengguna.nama_lengkap, tb_usaha.id_usaha, tb_usaha.nama_usaha, tb_kecamatan.nama_kecamatan FROM tb_pengguna JOIN tb_produk ON tb_pengguna.id_pengguna = tb_produk.id_pengguna JOIN tb_usaha ON tb_usaha.id_usaha = tb_produk.id_usaha JOIN tb_kelurahan ON tb_kelurahan.id_kelurahan = tb_usaha.id_kecamatan JOIN tb_kecamatan ON tb_kecamatan.id_kecamatan = tb_kelurahan.id_kecamatan WHERE tb_usaha.id_usaha ='$id_usaha'");
 	}
 
 	public function detailproduk($id_produk)

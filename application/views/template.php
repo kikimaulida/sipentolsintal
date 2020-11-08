@@ -15,7 +15,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Sistem Informasi Usaha Kecil</title>
+    <title>Sipentol Sintal</title>
     <meta name="description" content="Sufee Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -51,17 +51,15 @@
     <!-- Left Panel -->
     <aside id="left-panel" class="left-panel">
         <nav class="navbar navbar-expand-sm navbar-default">
-
             <div class="navbar-header">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href=""><img height="55px" src="<?=base_url()?>/assets/images/logo2.png" alt="Logo">  </a>
+                <a class="navbar-brand" href=""><img height="55px" src="<?=base_url()?>/assets/images/sipentol1.png" alt="Logo">  </a>
                 <a class="navbar-brand hidden" href=""><img src="<?=base_url()?>/assets/images/tala.png" alt="Logo"></a> <br>
             </div>
 
             <div id="main-menu" class="main-menu collapse navbar-collapse">
-
                 <ul class="nav navbar-nav">
                     <!-- <img src="<?=base_url()?>/assets/images/admin.jpg" class="rounded-circle mx-auto d-block" width="80px"></a> -->
                     <?php 
@@ -69,7 +67,6 @@
                     $a = $this->db->query("SELECT foto_pengguna FROM tb_pengguna WHERE id_pengguna = '$id_pengguna'")->row_array()?>
                     <img src="<?=base_url('uploads/pengguna/'.$a['foto_pengguna'])?>" class="rounded-circle mx-auto d-block" style="width: 100px; height: 100px;" />
 
-                    
                     <h5 class="menu-title" align="center" style="color: white; padding-top: 0" ><?=ucfirst($this->fungsi->pengguna_login()->nama_lengkap)?></h5> <br>
                     <li <?=$this->uri->segment(1) == 'Dashboard' || $this->uri->segment(1) == '' ? 'class="active"' : ''?>>
                         <a href="<?=site_url('Dashboard')?>">
@@ -163,10 +160,6 @@
         </nav>
     </aside><!-- /#left-panel -->
 
-    <!-- Left Panel -->
-
-    <!-- Right Panel -->
-
     <div id="right-panel" class="right-panel">
         <!-- Header-->
         <header id="header" class="header">
@@ -174,13 +167,11 @@
                 <div class="col-sm-7">
                     <a id="menuToggle" class="menutoggle pull-left"><i class="fa fa fa-tasks"></i></a>
                 </div>
-
                 <div class="col-sm-5">
                     <div class="user-area dropdown float-right">
                         <a href="<?=base_url()?>/assets/#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <img class="user-avatar rounded-circle" src="<?=base_url('uploads/pengguna/'.$a['foto_pengguna'])?>" alt="User Avatar" style="width: 30px; height: 30px;">
                         </a>
-
                         <div class="user-menu dropdown-menu">
                             <a href="<?=site_url('cprofile/profile_pengguna/'. $this->session->userdata('id_pengguna'))?>" class="nav-link"><i class="fa fa-user"></i> My Profile</a>
                             

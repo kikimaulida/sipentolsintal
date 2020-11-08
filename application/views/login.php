@@ -9,7 +9,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Sistem Informasi Usaha Kecil</title>
+    <title>Sipentol Sintal</title>
     <meta name="description" content="Sufee Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
@@ -34,7 +34,7 @@
                 <div class="login-form">
                     <div class="login-logo">
                         <img class="align-content" height="100px" src="<?=base_url()?>/assets/images/tala.png" alt="">
-                        <h3>Sistem Informasi Usaha Kecil (SI Acil) Kabupaten Tanah Laut</h3>
+                        <h3>Sipentol Sintal</h3>
                     </div>
                     <?php $this->view('messages') ?>
                     <form action="<?=site_url('auth/proses_login')?>" method="post">

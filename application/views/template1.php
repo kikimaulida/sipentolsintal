@@ -6,7 +6,7 @@
     <meta name="keywords" content="Ogani, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Sistem Informasi Usaha Kecil</title>
+    <title>Sipentol Sintal</title>
     <link rel="shortcut icon" href="<?=base_url()?>/assets/images/tala.png">
     <!-- Google Font -->
     <link href="<?=base_url()?>/assets1/https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
@@ -162,7 +162,7 @@
             <div class="row">
                 <div class="col-lg-3">
                     <div class="header__logo">
-                        <a href="<?=base_url()?>/assets1/./index.html" ><img src="<?=base_url()?>/assets/images/logo4.png" style="height: 60px;" alt=""></a>
+                        <a href="<?=base_url()?>/assets1/./index.html" ><img src="<?=base_url()?>/assets/images/sipentol.png" style="height: 60px;" alt=""></a>
                     </div>
                 </div>
                 <div class="col-lg-8">
@@ -198,7 +198,7 @@
                         <div class="footer__copyright__text">
                             <p>
                                 <!-- Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="<?=base_url()?>/assets1/https://colorlib.com" target="_blank">Colorlib</a> -->
-                                Copyright &copy;<script>document.write(new Date().getFullYear());</script> | Sistem Informasi Usaha Kecil (SI ACIL) Kabupaten Tanah Laut berbasis <i> Web</i>
+                                Copyright &copy;<script>document.write(new Date().getFullYear());</script> | Sipentol Sintal
 
                             </p>
                         </div>

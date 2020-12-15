@@ -88,9 +88,14 @@ class Chome extends CI_Controller {
 		$post = $this->input->post(null, TRUE);
 		if(isset($_POST['tambah'])) 
 		{
+			if($this->m_pengguna->check_nik($post['nik'])->num_rows() > 0 )
+			{
+				$this->session->set_flashdata('error', "Maaf, NIK  $post[nik] sudah terdaftar/digunakan.");
+				redirect('chome/daftar');
+			}
 			if($this->m_pengguna->check_username($post['username'])->num_rows() > 0 )
 			{
-				$this->session->set_flashdata('error', "Maaf, username  $post[username] sudah terdaftar/digunakan.");
+				$this->session->set_flashdata('error', "Maaf, Username  $post[username] sudah terdaftar/digunakan.");
 				redirect('chome/daftar');
 			}
 
@@ -140,6 +145,7 @@ class Chome extends CI_Controller {
 			}
 			else 
 			{
+				$post['foto_sku'] = 'null';
 				$post['foto_pengguna'] = 'default.png';
 				$this->m_pengguna->tambah_pengguna($post);
 				if ($this->db->affected_rows() > 0) 

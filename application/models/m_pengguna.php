@@ -102,6 +102,14 @@ class m_pengguna extends CI_Model {
 		return $query;
 	}
 
+	function check_nik($nik)
+	{
+		$this->db->from('tb_pengguna');
+		$this->db->where('nik', $nik);
+		$query = $this->db->get();
+		return $query;
+	}
+
 	public function ubah_data($data, $id_pengguna)
 	{
 		$this->db->where('id_pengguna', $id_pengguna);

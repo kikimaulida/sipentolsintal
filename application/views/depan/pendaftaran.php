@@ -26,11 +26,25 @@
                                     </div>
 
                                     <div class="row form-group">
+                                        <div class="col-md-3"><label class=" form-control-label" style="color: black;">NIK</label></div>
+                                        <div class="col-12 col-md-9"><input type="number" name="nik" class="form-control" required oninvalid="this.setCustomValidity('Silahkan Diisi')" oninput="setCustomValidity('')"></div>
+                                    </div>
+
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label class=" form-control-label" style="color: black;">Upload Foto/Scan KTP</label>
+                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            <input style="color: black;" type="file" id="file-input" name="foto_ktp" class="form-control-file" required oninvalid="this.setCustomValidity('Silahkan upload foto/scan KTP')" oninput="setCustomValidity('')">
+                                        </div>
+                                    </div>
+
+                                    <div class="row form-group">
                                         <div class="col-md-3"><label class=" form-control-label" style="color: black;">Nama Lengkap</label></div>
                                         <div class="col-12 col-md-9"><input type="text" name="nama_lengkap" value="<?=$row->nama_lengkap?>" class="form-control" required oninvalid="this.setCustomValidity('Silahkan Diisi')" oninput="setCustomValidity('')"></div>
                                     </div>
 
-                                     <div class="row form-group">
+
+                                    <div class="row form-group">
                                         <div class="col-md-3"><label class=" form-control-label" style="color: black;">Email</label></div>
                                         <div class="col-12 col-md-9"><input type="text" name="email" value="<?=$row->email?>" class="form-control" required oninvalid="this.setCustomValidity('Silahkan Diisi')" oninput="setCustomValidity('')"></div>
                                     </div>
@@ -46,17 +60,22 @@
                                     </div>
 
                                     <div class="row form-group">
-                                        <div class="col col-md-3"><label class=" form-control-label" style="color: black;">Upload Foto/Scan KTP</label>
-                                        </div>
+                                        <!-- <div class="col-md-3"><label class=" form-control-label" style="color: black;">Nomor SKU</label></div> -->
+                                        <div class="col-12 col-md-9"><input type="hidden" name="no_sku" value="null" class="form-control" ></div>
+                                    </div>
+
+                                    <div class="row form-group">
+                                        <!-- <div class="col col-md-3"><label class=" form-control-label" style="color: black;">Upload foto/scan SKU</label>
+                                        </div> -->
                                         <div class="col-12 col-md-9">
-                                            <input style="color: black;" type="file" id="file-input" name="foto_ktp" class="form-control-file" required oninvalid="this.setCustomValidity('Silahkan upload foto/scan KTP')" oninput="setCustomValidity('')">
+                                            <input type="hidden" name="foto_sku" class="form-control-file" value="null">
                                         </div>
                                     </div>
-                                   
+
                                     <input type="hidden" name="level" value="<?php echo $level='user'?>" class="form-control">
 
                                     <input type="hidden" name="status" value="<?php echo $status='menunggu konfirmasi'?>" class="form-control" readonly="readonly" required>
-                                        
+
                                     <hr>
                                     <div align="center">
                                         <button type="submit" name="<?=$page?>" class="btn btn-info">Daftar</button>

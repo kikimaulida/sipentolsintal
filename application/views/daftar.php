@@ -34,7 +34,7 @@
                 <div class="login-form">
                     <div class="login-logo">
                         <img class="align-content" height="100px" src="<?=base_url()?>/assets/images/tala.png" alt="">
-                        <h3>Sistem Informasi Usaha Kecil (SI Acil) Kabupaten Tanah Laut</h2>
+                        <h3>SIPENTOL SINTAL</h2>
                     </div>
                     <form action="<?=site_url('cdaftar/proses')?>" method="post">
                         <input type="hidden" name="id_pengguna"  class="form-control">

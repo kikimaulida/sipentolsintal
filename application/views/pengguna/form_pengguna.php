@@ -14,23 +14,28 @@
                 </div>
 
                 <div class="row form-group">
+                    <div class="col-md-3"><label class=" form-control-label">NIK</label></div>
+                    <div class="col-12 col-md-9"><input type="text" name="nik" minlength="16" maxlength="16" value="<?=$row->nik?>" class="form-control" required oninvalid="this.setCustomValidity('Silahkan isi dan lengkapi')" oninput="setCustomValidity('')"></div>
+                </div>
+
+                <div class="row form-group">
                     <div class="col-md-3"><label class=" form-control-label">Nama Pengguna</label></div>
-                    <div class="col-12 col-md-9"><input type="text" name="nama_lengkap" value="<?=$row->nama_lengkap?>" class="form-control"></div>
+                    <div class="col-12 col-md-9"><input type="text" name="nama_lengkap" value="<?=$row->nama_lengkap?>" class="form-control" required oninvalid="this.setCustomValidity('Silahkan Diisi')" oninput="setCustomValidity('')"></div>
                 </div>
 
                 <div class="row form-group">
                     <div class="col-md-3"><label class=" form-control-label">Email</label></div>
-                    <div class="col-12 col-md-9"><input type="text" name="email" value="<?=$row->email?>" class="form-control"></div>
+                    <div class="col-12 col-md-9"><input type="text" name="email" value="<?=$row->email?>" class="form-control" required oninvalid="this.setCustomValidity('Silahkan Diisi')" oninput="setCustomValidity('')"></div>
                 </div>
 
                 <div class="row form-group">
                     <div class="col-md-3"><label class=" form-control-label">Username</label></div>
-                    <div class="col-12 col-md-9"><input type="text" name="username" value="<?=$row->username?>" class="form-control"></div>
+                    <div class="col-12 col-md-9"><input type="text" name="username" value="<?=$row->username?>" class="form-control" required oninvalid="this.setCustomValidity('Silahkan Diisi')" oninput="setCustomValidity('')"></div>
                 </div>
 
                 <div class="row form-group">
                     <div class="col-md-3"><label class=" form-control-label">Password</label></div>
-                    <div class="col-12 col-md-9"><input type="password" name="password" value="<?=$row->password?>" class="form-control"></div>
+                    <div class="col-12 col-md-9"><input type="password" name="password" value="<?=$row->password?>" class="form-control" required oninvalid="this.setCustomValidity('Silahkan Diisi')" oninput="setCustomValidity('')"></div>
                 </div>
 
                  <div class="row form-group">

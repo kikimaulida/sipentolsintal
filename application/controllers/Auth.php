@@ -41,7 +41,7 @@ class Auth extends CI_Controller {
 					$this->session->set_flashdata('error', "Maaf, Anda Tidak Diizinkan Masuk!");
 						redirect('auth/login');
 				}else {
-					$this->session->set_flashdata('error', "Maaf, tunggu verifikasi dari SIACIL TALA");
+					$this->session->set_flashdata('error', "Maaf, tunggu verifikasi dari SIPENTOL SINTAL");
 						redirect('auth/login');
 				}	
 			}

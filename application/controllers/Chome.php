@@ -133,7 +133,7 @@ class Chome extends CI_Controller {
 					$this->m_pengguna->tambah_pengguna($post);
 					if ($this->db->affected_rows() > 0) 
 					{
-			          	$this->session->set_flashdata('success', "Tunggu Verifikasi Dari SIACIL TALA");
+			          	$this->session->set_flashdata('success', "Tunggu Verifikasi Dari SIPENTOL SINTAL");
 			        }
 						redirect('auth/login');
 				}
@@ -145,7 +145,7 @@ class Chome extends CI_Controller {
 			}
 			else 
 			{
-				$post['foto_sku'] = 'null';
+				/*$post['foto_sku'] = 'null';*/
 				$post['foto_pengguna'] = 'default.png';
 				$this->m_pengguna->tambah_pengguna($post);
 				if ($this->db->affected_rows() > 0) 

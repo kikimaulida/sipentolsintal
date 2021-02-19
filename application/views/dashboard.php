@@ -132,8 +132,8 @@
                             </script>
                           </head>
                           <body>
-                            <div id="kategori" style="width: 500px; height: 350px;"></div>
-                            <div id="kecamatan" style="width: 500px; height: 350px;"></div>
+                            <div id="kategori" style="width: 600px; height: 350px;"></div>
+                            <div id="kecamatan" style="width: 600px; height: 350px;"></div>
                           </body>
                         </html>
 

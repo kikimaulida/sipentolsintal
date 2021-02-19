@@ -7,23 +7,52 @@ class m_usaha extends CI_Model {
 	{
 		if($id_pengguna == null)
 		{
-			if(isset($_GET['awal']) && isset($_GET['akhir']))
-			{
+			if (isset($_GET['filter'])) {
+				$klasifikasi  = $_GET['klasifikasi'];
+				$kategori = $_GET['kategori'];
+				$kecamatan = $_GET['kecamatan'];
+				$kelurahan = $_GET['kelurahan'];
 				$awal = $_GET['awal'];
-				$akhir = $_GET['akhir'];
-				return $this->db->query("SELECT tb_usaha.*, tb_pengguna.*, tb_kategori.id_kategori, tb_kategori.nama_kategori, tb_kecamatan.id_kecamatan,tb_kelurahan.nama_kelurahan, tb_kelurahan.kode_pos, tb_kecamatan.nama_kecamatan FROM tb_pengguna JOIN tb_usaha ON tb_pengguna.id_pengguna = tb_usaha.id_pengguna JOIN tb_kategori ON tb_kategori.id_kategori = tb_usaha.id_kategori JOIN tb_kelurahan ON tb_kelurahan.id_kelurahan = tb_usaha.id_kecamatan JOIN tb_kecamatan ON tb_kecamatan.id_kecamatan = tb_kelurahan.id_kecamatan WHERE tb_usaha.status = 'diterima' AND tb_usaha.bergabung BETWEEN '$awal' AND '$akhir'");
-			}
+				$akhir= $_GET['akhir'];
+				if( $awal != '' && $akhir != '')
+				{
+					$awal = $_GET['awal'];
+					$akhir = $_GET['akhir'];
+					return $this->db->query("SELECT tb_usaha.*, tb_pengguna.*, tb_kategori.id_kategori, tb_kategori.nama_kategori, tb_kecamatan.id_kecamatan,tb_kelurahan.nama_kelurahan, tb_kelurahan.kode_pos, tb_kecamatan.nama_kecamatan FROM tb_pengguna JOIN tb_usaha ON tb_pengguna.id_pengguna = tb_usaha.id_pengguna JOIN tb_kategori ON tb_kategori.id_kategori = tb_usaha.id_kategori JOIN tb_kelurahan ON tb_kelurahan.id_kelurahan = tb_usaha.id_kecamatan JOIN tb_kecamatan ON tb_kecamatan.id_kecamatan = tb_kelurahan.id_kecamatan WHERE tb_usaha.status = 'diterima' AND tb_usaha.bergabung BETWEEN '$awal' AND '$akhir'");
+				}
+				
+				else if($klasifikasi != '') 
+				{
+					$klasifikasi = $_GET['klasifikasi'];
+					return $this->db->query("SELECT tb_usaha.*, tb_pengguna.*, tb_kategori.id_kategori, tb_kategori.nama_kategori, tb_kecamatan.id_kecamatan,tb_kelurahan.nama_kelurahan, tb_kelurahan.kode_pos, tb_kecamatan.nama_kecamatan FROM tb_pengguna JOIN tb_usaha ON tb_pengguna.id_pengguna = tb_usaha.id_pengguna JOIN tb_kategori ON tb_kategori.id_kategori = tb_usaha.id_kategori JOIN tb_kelurahan ON tb_kelurahan.id_kelurahan = tb_usaha.id_kecamatan JOIN tb_kecamatan ON tb_kecamatan.id_kecamatan = tb_kelurahan.id_kecamatan WHERE tb_usaha.status = 'diterima' AND tb_usaha.kelas = '$klasifikasi'");
+				}
 
-			/*else if(isset($_GET['cari']))
-			{
-				$cari = $_GET['cari'];
-				return $this->db->query("SELECT tb_usaha.*, tb_pengguna.*, tb_kategori.id_kategori, tb_kategori.nama_kategori, tb_kecamatan.id_kecamatan,tb_kelurahan.nama_kelurahan, tb_kelurahan.kode_pos, tb_kecamatan.nama_kecamatan FROM tb_pengguna JOIN tb_usaha ON tb_pengguna.id_pengguna = tb_usaha.id_pengguna JOIN tb_kategori ON tb_kategori.id_kategori = tb_usaha.id_kategori JOIN tb_kelurahan ON tb_kelurahan.id_kelurahan = tb_usaha.id_kecamatan JOIN tb_kecamatan ON tb_kecamatan.id_kecamatan = tb_kelurahan.id_kecamatan WHERE tb_usaha.status = 'diterima' AND tb_usaha.kelas LIKE '%$cari%' or tb_kategori.nama_kategori  LIKE '%$cari%' or tb_kecamatan.nama_kecamatan LIKE '%$cari%' or tb_kelurahan.nama_kelurahan LIKE '%$cari%'");
-			}*/
+				else if($kategori !='')
+				{
+					$kategori = $_GET['kategori'];
+					return $this->db->query("SELECT tb_usaha.*, tb_pengguna.*, tb_kategori.id_kategori, tb_kategori.nama_kategori, tb_kecamatan.id_kecamatan,tb_kelurahan.nama_kelurahan, tb_kelurahan.kode_pos, tb_kecamatan.nama_kecamatan FROM tb_pengguna JOIN tb_usaha ON tb_pengguna.id_pengguna = tb_usaha.id_pengguna JOIN tb_kategori ON tb_kategori.id_kategori = tb_usaha.id_kategori JOIN tb_kelurahan ON tb_kelurahan.id_kelurahan = tb_usaha.id_kecamatan JOIN tb_kecamatan ON tb_kecamatan.id_kecamatan = tb_kelurahan.id_kecamatan WHERE tb_usaha.status = 'diterima' AND tb_kategori.id_kategori = '$kategori'");
+				}
 
-			else
-			{
-				return $this->db->query("SELECT tb_usaha.*, tb_pengguna.*, tb_kategori.id_kategori, tb_kategori.nama_kategori, tb_kecamatan.id_kecamatan,tb_kelurahan.nama_kelurahan, tb_kelurahan.kode_pos, tb_kecamatan.nama_kecamatan FROM tb_pengguna JOIN tb_usaha ON tb_pengguna.id_pengguna = tb_usaha.id_pengguna JOIN tb_kategori ON tb_kategori.id_kategori = tb_usaha.id_kategori JOIN tb_kelurahan ON tb_kelurahan.id_kelurahan = tb_usaha.id_kecamatan JOIN tb_kecamatan ON tb_kecamatan.id_kecamatan = tb_kelurahan.id_kecamatan WHERE tb_usaha.status = 'diterima' ORDER BY tb_usaha.id_usaha DESC");
+				else if($kecamatan !='')
+				{
+					$kecamatan = $_GET['kecamatan'];
+					return $this->db->query("SELECT tb_usaha.*, tb_pengguna.*, tb_kategori.id_kategori, tb_kategori.nama_kategori, tb_kecamatan.id_kecamatan,tb_kelurahan.nama_kelurahan, tb_kelurahan.kode_pos, tb_kecamatan.nama_kecamatan FROM tb_pengguna JOIN tb_usaha ON tb_pengguna.id_pengguna = tb_usaha.id_pengguna JOIN tb_kategori ON tb_kategori.id_kategori = tb_usaha.id_kategori JOIN tb_kelurahan ON tb_kelurahan.id_kelurahan = tb_usaha.id_kecamatan JOIN tb_kecamatan ON tb_kecamatan.id_kecamatan = tb_kelurahan.id_kecamatan WHERE tb_usaha.status = 'diterima' AND tb_kelurahan.id_kecamatan = '$kecamatan'");
+				}
+
+				else if($kelurahan !='')
+				{
+					$kelurahan = $_GET['kelurahan'];
+					return $this->db->query("SELECT tb_usaha.*, tb_pengguna.*, tb_kategori.id_kategori, tb_kategori.nama_kategori, tb_kecamatan.id_kecamatan,tb_kelurahan.nama_kelurahan, tb_kelurahan.kode_pos, tb_kecamatan.nama_kecamatan FROM tb_pengguna JOIN tb_usaha ON tb_pengguna.id_pengguna = tb_usaha.id_pengguna JOIN tb_kategori ON tb_kategori.id_kategori = tb_usaha.id_kategori JOIN tb_kelurahan ON tb_kelurahan.id_kelurahan = tb_usaha.id_kecamatan JOIN tb_kecamatan ON tb_kecamatan.id_kecamatan = tb_kelurahan.id_kecamatan WHERE tb_usaha.status = 'diterima' AND tb_usaha.id_kecamatan = '$kelurahan'");
+				}
+
+				else
+				{
+					return $this->db->query("SELECT tb_usaha.*, tb_pengguna.*, tb_kategori.id_kategori, tb_kategori.nama_kategori, tb_kecamatan.id_kecamatan,tb_kelurahan.nama_kelurahan, tb_kelurahan.kode_pos, tb_kecamatan.nama_kecamatan FROM tb_pengguna JOIN tb_usaha ON tb_pengguna.id_pengguna = tb_usaha.id_pengguna JOIN tb_kategori ON tb_kategori.id_kategori = tb_usaha.id_kategori JOIN tb_kelurahan ON tb_kelurahan.id_kelurahan = tb_usaha.id_kecamatan JOIN tb_kecamatan ON tb_kecamatan.id_kecamatan = tb_kelurahan.id_kecamatan WHERE tb_usaha.status = 'diterima' ORDER BY tb_usaha.id_usaha DESC");
+				}
+			} else {
+				return $this->db->query("SELECT tb_usaha.*, tb_pengguna.*, tb_kategori.id_kategori, tb_kategori.nama_kategori, tb_kecamatan.id_kecamatan,tb_kelurahan.nama_kelurahan, tb_kelurahan.kode_pos, tb_kecamatan.nama_kecamatan FROM tb_pengguna JOIN tb_usaha ON tb_pengguna.id_pengguna = tb_usaha.id_pengguna JOIN tb_kategori ON tb_kategori.id_kategori = tb_usaha.id_kategori JOIN tb_kelurahan ON tb_kelurahan.id_kelurahan = tb_usaha.id_kecamatan JOIN tb_kecamatan ON tb_kecamatan.id_kecamatan = tb_kelurahan.id_kecamatan WHERE tb_usaha.status = 'diterima' ORDER BY tb_usaha.id_usaha DESC");# code...
 			}
+			
 		}
 		else
 		{
@@ -37,9 +66,30 @@ class m_usaha extends CI_Model {
 		return $this->db->query("SELECT tb_usaha.*, tb_pengguna.*, tb_kategori.id_kategori, tb_kategori.nama_kategori, tb_kecamatan.id_kecamatan,tb_kelurahan.nama_kelurahan, tb_kelurahan.kode_pos, tb_kecamatan.nama_kecamatan FROM tb_pengguna JOIN tb_usaha ON tb_pengguna.id_pengguna = tb_usaha.id_pengguna JOIN tb_kategori ON tb_kategori.id_kategori = tb_usaha.id_kategori JOIN tb_kelurahan ON tb_kelurahan.id_kelurahan = tb_usaha.id_kecamatan JOIN tb_kecamatan ON tb_kecamatan.id_kecamatan = tb_kelurahan.id_kecamatan WHERE tb_usaha.status = 'diterima' AND tb_usaha.bergabung BETWEEN '$awal' AND '$akhir'");
 	}
 
+	public function cetak_klasifikasi($klasifikasi)
+	{
+		return $this->db->query("SELECT tb_usaha.*, tb_pengguna.*, tb_kategori.id_kategori, tb_kategori.nama_kategori, tb_kecamatan.id_kecamatan,tb_kelurahan.nama_kelurahan, tb_kelurahan.kode_pos, tb_kecamatan.nama_kecamatan FROM tb_pengguna JOIN tb_usaha ON tb_pengguna.id_pengguna = tb_usaha.id_pengguna JOIN tb_kategori ON tb_kategori.id_kategori = tb_usaha.id_kategori JOIN tb_kelurahan ON tb_kelurahan.id_kelurahan = tb_usaha.id_kecamatan JOIN tb_kecamatan ON tb_kecamatan.id_kecamatan = tb_kelurahan.id_kecamatan WHERE tb_usaha.status = 'diterima' AND tb_usaha.kelas = '$klasifikasi'");
+	}
+
+	public function cetak_kategori($kategori)
+	{
+		return $this->db->query("SELECT tb_usaha.*, tb_pengguna.*, tb_kategori.id_kategori, tb_kategori.nama_kategori, tb_kecamatan.id_kecamatan,tb_kelurahan.nama_kelurahan, tb_kelurahan.kode_pos, tb_kecamatan.nama_kecamatan FROM tb_pengguna JOIN tb_usaha ON tb_pengguna.id_pengguna = tb_usaha.id_pengguna JOIN tb_kategori ON tb_kategori.id_kategori = tb_usaha.id_kategori JOIN tb_kelurahan ON tb_kelurahan.id_kelurahan = tb_usaha.id_kecamatan JOIN tb_kecamatan ON tb_kecamatan.id_kecamatan = tb_kelurahan.id_kecamatan WHERE tb_usaha.status = 'diterima' AND tb_kategori.id_kategori = '$kategori'");
+	}
+
+	public function cetak_kecamatan($kecamatan)
+	{
+		return $this->db->query("SELECT tb_usaha.*, tb_pengguna.*, tb_kategori.id_kategori, tb_kategori.nama_kategori, tb_kecamatan.id_kecamatan,tb_kelurahan.nama_kelurahan, tb_kelurahan.kode_pos, tb_kecamatan.nama_kecamatan FROM tb_pengguna JOIN tb_usaha ON tb_pengguna.id_pengguna = tb_usaha.id_pengguna JOIN tb_kategori ON tb_kategori.id_kategori = tb_usaha.id_kategori JOIN tb_kelurahan ON tb_kelurahan.id_kelurahan = tb_usaha.id_kecamatan JOIN tb_kecamatan ON tb_kecamatan.id_kecamatan = tb_kelurahan.id_kecamatan WHERE tb_usaha.status = 'diterima' AND tb_kelurahan.id_kecamatan = '$kecamatan'");
+	}
+
+	public function cetak_kelurahan($kelurahan)
+	{
+		return $this->db->query("SELECT tb_usaha.*, tb_pengguna.*, tb_kategori.id_kategori, tb_kategori.nama_kategori, tb_kecamatan.id_kecamatan,tb_kelurahan.nama_kelurahan, tb_kelurahan.kode_pos, tb_kecamatan.nama_kecamatan FROM tb_pengguna JOIN tb_usaha ON tb_pengguna.id_pengguna = tb_usaha.id_pengguna JOIN tb_kategori ON tb_kategori.id_kategori = tb_usaha.id_kategori JOIN tb_kelurahan ON tb_kelurahan.id_kelurahan = tb_usaha.id_kecamatan JOIN tb_kecamatan ON tb_kecamatan.id_kecamatan = tb_kelurahan.id_kecamatan WHERE tb_usaha.status = 'diterima' AND tb_usaha.id_kecamatan = '$kelurahan'");
+	}
+
+
 	public function getusaha($id_usaha)
 	{
-		return $this->db->query("SELECT tb_usaha.*, tb_pengguna.*, tb_kategori.id_kategori, tb_kategori.nama_kategori, tb_kecamatan.id_kecamatan,tb_kelurahan.nama_kelurahan, tb_kelurahan.kode_pos, tb_kecamatan.nama_kecamatan FROM tb_pengguna JOIN tb_usaha ON tb_pengguna.id_pengguna = tb_usaha.id_pengguna JOIN tb_kategori ON tb_kategori.id_kategori = tb_usaha.id_kategori JOIN tb_kelurahan ON tb_kelurahan.id_kelurahan = tb_usaha.id_kecamatan JOIN tb_kecamatan ON tb_kecamatan.id_kecamatan = tb_kelurahan.id_kecamatan WHERE tb_usaha.id_usaha = '$id_usaha'");
+		return $this->db->query("SELECT tb_usaha.*, tb_pengguna.*, tb_kategori.id_kategori, tb_kategori.nama_kategori, tb_kecamatan.id_kecamatan,tb_kelurahan.id_kelurahan, tb_kelurahan.nama_kelurahan, tb_kelurahan.kode_pos, tb_kecamatan.nama_kecamatan FROM tb_pengguna JOIN tb_usaha ON tb_pengguna.id_pengguna = tb_usaha.id_pengguna JOIN tb_kategori ON tb_kategori.id_kategori = tb_usaha.id_kategori JOIN tb_kelurahan ON tb_kelurahan.id_kelurahan = tb_usaha.id_kecamatan JOIN tb_kecamatan ON tb_kecamatan.id_kecamatan = tb_kelurahan.id_kecamatan WHERE tb_usaha.id_usaha = '$id_usaha'");
 	}
  
 	public function tambah_usaha($post)

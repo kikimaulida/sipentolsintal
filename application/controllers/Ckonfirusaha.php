@@ -41,7 +41,7 @@
 	        $status=$this->input->post('status');
 	        if ($status =='diterima') {
 	        	$subject = "Konfirmasi Usaha Diterima";
-	        	$pesan = "Silahkan Login dengan Klik link <a href='".base_url()."auth/login'> siaciltala</a> untuk mengelola Usaha Anda";
+	        	$pesan = "Silahkan Login dengan Klik link <a href='".base_url()."auth/login'> sipentolsintal.tanahlautkab.go.id</a> untuk mengelola Usaha Anda";
 	        } else {
 	        	$subject = "Konfirmasi Usaha Ditolak";
 	        	$pesan = "Mohon maaf, usaha Anda ditolak dengan alasan ".$this->input->post('pesan');
@@ -50,9 +50,9 @@
 	        $this->load->library('email');
 	    	$mail_config['smtp_host'] = 'smtp.gmail.com';
 			$mail_config['smtp_port'] = '587';
-			$mail_config['smtp_user'] = 'siaciltala@gmail.com';
+			$mail_config['smtp_user'] = 'sipentolsintal@gmail.com';
 			$mail_config['_smtp_auth'] = TRUE;
-			$mail_config['smtp_pass'] = '12juli1947';
+			$mail_config['smtp_pass'] = 's1p3nt0ls1nt4l21';
 			$mail_config['smtp_crypto'] = 'tls';
 			$mail_config['protocol'] = 'smtp';
 			$mail_config['mailtype'] = 'html';
@@ -61,7 +61,7 @@
 			$mail_config['wordwrap'] = TRUE;
 			$this->email->initialize($mail_config);
 			$this->email->set_newline("\r\n");
-	        $this->email->from("siaciltala@gmail.com", 'SIACIL TALA'); 
+	        $this->email->from("sipentolsintal@gmail.com", 'SIPENTOL SINTAL'); 
 	        $this->email->to($email_kirim);
 	        $this->email->subject($subject); 
 	        $this->email->message($pesan);  

@@ -51,8 +51,10 @@ class m_dashboard extends CI_Model {
     function hitungkecamatan()
     {
         
-        $hitungkecamatan=$this->db->query("SELECT tb_kecamatan.nama_kecamatan, COUNT(tb_usaha.id_kecamatan) AS jumlah FROM tb_kecamatan JOIN tb_usaha ON tb_kecamatan.id_kecamatan=tb_usaha.id_kecamatan GROUP BY tb_kecamatan.id_kecamatan")->result_array();
+        $hitungkecamatan=$this->db->query("SELECT tb_kecamatan.nama_kecamatan, COUNT(tb_usaha.id_kecamatan) AS jumlah FROM tb_kecamatan JOIN tb_kelurahan ON tb_kecamatan.id_kecamatan = tb_kelurahan.id_kecamatan JOIN tb_usaha ON tb_kelurahan.id_kelurahan = tb_usaha.id_kecamatan WHERE tb_usaha.status = 'diterima' GROUP BY tb_kecamatan.id_kecamatan")->result_array();
         return $hitungkecamatan;
+
+        /*SELECT tb_kecamatan.nama_kecamatan, COUNT(tb_usaha.id_kecamatan) AS jumlah FROM tb_kecamatan JOIN tb_usaha ON tb_kecamatan.id_kecamatan=tb_usaha.id_kecamatan GROUP BY tb_kecamatan.id_kecamatan*/
     }
 
 }

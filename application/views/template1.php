@@ -257,29 +257,5 @@
         });
       });
     </script>
-
-
-    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function(){
-        var left = 140
-        $('#text_counter').text('Characters left: ' + left);
-     
-            $('#status').keyup(function () {
-     
-            left = 16 - $(this).val().length;
-     
-            if(left < 0){
-                $('#text_counter').addClass("overlimit");
-                 $('#posting').attr("disabled", true);
-            }else{
-                $('#text_counter').removeClass("overlimit");
-                $('#posting').attr("disabled", false);
-            }
-     
-            $('#text_counter').text('Characters left: ' + left); 
-    </script>
-
-    
 </body>
 </html>

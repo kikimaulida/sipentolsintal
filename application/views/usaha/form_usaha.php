@@ -80,7 +80,7 @@
                     'required' => 'required'])?>
                     </div>
                 </div> -->
-
+                <?php if($page == 'tambah') { ?>
                 <div class="row form-group">
                     <div class="col-md-3"><label class=" form-control-label">Kecamatan</label></div>
                     <div class="col-12 col-md-9"> 
@@ -102,6 +102,31 @@
                          </select>
                     </div>
                 </div>
+                <?php } ?>
+
+                <?php if($page == 'ubah') { ?>
+                <div class="row form-group">
+                    <div class="col-md-3"><label class=" form-control-label">Kecamatan</label></div>
+                    <div class="col-12 col-md-9"> 
+                        <select name="kecamatan" id="nm_kecamatan" class="browser-default custom-select" required>
+                            <option value="">- Pilih Kecamatan -</option>
+                            <?php foreach ($kecamatan as $dt) { ?>
+                                 <option <?=$row->id_kecamatan==$dt->id_kecamatan?'selected':null ?> value="<?php echo $dt->id_kecamatan?>"><?php echo $dt->nama_kecamatan?></option>
+                           <?php } ?>
+
+                         </select>
+                    </div>
+                </div>
+
+                 <div class="row form-group">
+                    <div class="col-md-3"><label class=" form-control-label">Kelurahan</label></div>
+                    <div class="col-12 col-md-9"> 
+                        <select name="kelurahan" id="nm_kelurahan" class="browser-default custom-select" required>
+                            <option  value="<?=$row->id_kelurahan?>"><?=$row->nama_kelurahan?></option>
+                         </select>
+                    </div>
+                </div>
+                <?php } ?>
 
                <!--  <div class="row form-group">
                     <div class="col col-md-3"><label for="select" class=" form-control-label">Kel/Desa</label></div>

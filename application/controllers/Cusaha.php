@@ -22,6 +22,9 @@
 				$id_pengguna = $this->session->userdata('id_pengguna');
 			}
 			$data['row'] = $this->m_usaha->tampil_usaha($id_pengguna);
+			$data['row1'] = $this->m_kategori->tampil_kategori();
+			$data['row2'] = $this->m_kecamatan->tampil_kecamatan();
+			$data['row3'] = $this->m_kelurahan->tampil_kelurahan();
 			/*var_dump($data);*/
 			$this->template->load('template', 'usaha/data_usaha', $data);
 		} 
@@ -113,7 +116,7 @@
 						$this->m_usaha->tambah_usaha($post);
 						if($this->db->affected_rows() > 0)
 						{
-							$this->session->set_flashdata('success', "Data Berhasil Disimpan");
+							$this->session->set_flashdata('success', "Data Sedang Diproses");
 						}
 							redirect('cusaha');
 
@@ -130,7 +133,7 @@
 					$this->m_usaha->tambah_usaha($post);
 					if($this->db->affected_rows() > 0)
 					{
-						$this->session->set_flashdata('success', "Data Berhasil Disimpan");
+						$this->session->set_flashdata('success', "Data Sedang Diproses");
 					}
 						redirect('cusaha');
 				}
